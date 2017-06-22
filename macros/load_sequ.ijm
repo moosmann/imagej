@@ -1,13 +1,14 @@
 // Read load-cell tomograms  and save vol-cut sequences
-run("Close All");
 print( "")
-print( "Processing load cell sequence" )
+print( "PROCESSING LOAD SEQUENCE" )
+run("Close All");
+
 
 prefix = "/asap3/petra3/gpfs/p05/2017/data/11003950/processed/syn13_55L_Mg10Gd_12w_load_"
 
 // z ROI
 z0 = 140;
-z1 = 600;
+z1 = 620;
 z = 301;
 
 // Loop over tomos
@@ -40,6 +41,12 @@ print( " height : " + height);
 print( " channels : " + channelCount );
 print( " slices : " + sliceCount );
 print( " frames : " + frameCount);
+
+// load sequenc
+z = 751;
+setSlice( z );
+makeRectangle(58, 0, 1424, 512);
+run("Duplicate...", "duplicate slices=" + z );
 
 // END
 print( "FINISHED" )
